@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Undertone — read the feeling in your words</title>
+<meta name="description" content="Write a sentence and watch a small model read the feeling underneath it." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body data-state="idle">
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <span class="wordmark">Undertone</span>
+    <div class="status" id="status" title="Checking model…">
+      <span class="status-dot" id="statusDot"></span>
+      <span class="status-text" id="statusText">Waking up</span>
+    </div>
+  </header>
+
+  <main class="stage">
+
+    <section class="mirror" aria-hidden="false">
+      <div class="blob-wrap">
+        <div class="blob" id="blob"></div>
+        <div class="blob-emoji" id="blobEmoji">＿</div>
+      </div>
+      <p class="reading" id="readingLabel">Waiting for a sentence</p>
+    </section>
+
+    <section class="composer">
+      <h1>Say a sentence. <span class="serif-em">We'll read what's underneath it.</span></h1>
+      <p class="lede">Type something you'd actually say out loud — a text to a friend, a line from your day, a thought mid-thought. A small language model reads it back and tells you what it heard.</p>
+
+      <form id="predictForm" novalidate>
+        <div class="field">
+          <textarea
+            id="textInput"
+            maxlength="2000"
+            rows="4"
+            placeholder="I don't know, today just felt&hellip;"
+            required
+          ></textarea>
+          <span class="count" id="charCount">0 / 2000</span>
+        </div>
+
+        <div class="controls">
+          <button type="submit" id="submitBtn" disabled>
+            <span id="submitLabel">Waking up the model&hellip;</span>
+          </button>
+          <span class="hint">Tip: Ctrl+Enter (or ⌘+Enter) works too.</span>
+        </div>
+      </form>
+
+      <p class="error" id="errorMsg" role="alert" hidden></p>
+    </section>
+
+    <section class="breakdown" id="breakdown" hidden>
+      <h2>Full breakdown</h2>
+      <ul class="bars" id="barsList"></ul>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>BiGRU emotion model · six-way classifier</span>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
