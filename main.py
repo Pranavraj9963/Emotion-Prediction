@@ -11,10 +11,10 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.preprocessing.text import Tokenizer
 import numpy as np
 
-
+                                                         
 
 model_path ="Artifacts/BiGRU_Model.keras"
-
+    
 tokenizer_path = "Artifacts/tokenizer.pkl"
 
 max_sequence_length = 50
